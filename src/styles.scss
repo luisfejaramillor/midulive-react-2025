@@ -1,0 +1,107 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+body{
+    margin: 0;
+    background: #222;
+    font-family: system-ui;
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    .tw-followCard {
+        display: flex;
+        align-items: center;
+        color: #fff;
+        font-size: 0.8rem;
+        justify-content: space-between;
+
+        &-header {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        &-info {
+            display: flex;
+            flex-direction: column;
+
+            &UserName {
+            opacity: 0.6;
+            }
+        }
+
+        &-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 1000px;
+        }
+
+        &-button {
+            cursor: pointer;
+            margin-left: 16px;
+            border: 0;
+            border-radius: 999px;
+            padding: 6px 16px;
+            font-weight: bold;
+            border: 1px solid #000;
+            transition: 0.3s ease background-color;
+
+            &:hover {
+                opacity: 0.8;
+            }
+
+            &.is-following {
+                border: 1px solid #bbb;
+                background: transparent;
+                color: #fff;
+                width: 140px;
+
+                &:hover {
+                    background-color: rgba(255, 0, 0, 0.178);
+                    color: red;
+                    border: 1px solid red;
+                    transition: 0.3s ease all;
+                    opacity: 1;
+
+                    .tw-followCard-text {
+                        display: none;
+                    }
+
+                    .tw-followCard-stopFollow {
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        &-text {
+            display: block;
+        }
+
+        &-stopFollow {
+            display: none;
+        }
+    }
+}
