@@ -1,11 +1,10 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { saveGameToStorage, resetGameToStorage } from "./logic/storage"
 import confetti from 'canvas-confetti'
 import { Square } from "./components/SquareCard"
 import { TURNS, WINNER_COMBOS } from "./contants"
 import { checkEndGame, checkWinner } from "./logic/board"
 import { WinnerModal } from "./components/WinnerModal"
-
 
 export const App = () => {
   const [board, setBoard] = useState(()=>{
@@ -52,12 +51,14 @@ export const App = () => {
 
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X;
     setTurn(newTurn)
-    saveGameToStorage({
-      newBoard,
-      newTurn
-    })
   }
 
+  useEffect(() => {
+    saveGameToStorage({
+      newBoard: board,
+      newTurn: turn
+    })
+  }, [board, turn])
   
 
   return(
